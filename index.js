@@ -41,7 +41,7 @@ app.post("/authentication", (req, res) => {
 
   let storedUserName = userList.users.find((user) => user.username == username);
   let storedPassword = userList.users.find((user) => user.password == password);
-  console.log(storedUserName);
+  
   if (
     storedUserName.username === username &&
     storedPassword.password === password

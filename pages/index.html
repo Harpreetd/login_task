@@ -27,8 +27,8 @@
     const checkCookie = () => {
       let currentUser = getCookie("username");
 
-      if (currentUser === " ") {
-        document.getElementById("currentUser").innerText = "New user";
+      if (currentUser === null) {
+        document.getElementById("currentUser").innerText = "Unknown user";
       } else {
         document.getElementById("currentUser").innerText = currentUser;
       }
