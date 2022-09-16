@@ -8,6 +8,7 @@ const hostname = "localhost";
 const port = process.env.PORT || 8080;
 const userList = require("./userList.json");
 const app = express();
+app.use(express.static(path.join(__dirname, "/pages/index.css")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   sessions({
@@ -57,9 +58,11 @@ app.post("/authentication", (req, res) => {
 // Post for Updating user info
 app.post("/update", (req, res) => {
   let newUserName = req.body.username;
-  let newPassword = req.body.password;
-  res.write(newUserName + newPassword);
-  res.end();
+  let newPassword = req.body.new_password;
+  res.sendFile(path.join(__dirname, "/pages/updateInfo.html"));
+  // res.write(newUserName + newPassword);
+  // res.write("Your data has been updated successfully");
+  // res.end();
 });
 // route to dashboard
 app.get("/dashboard", (req, res) => {

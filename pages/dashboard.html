@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <!-- <link rel="stylesheet" href="index.css" /> -->
   </head>
   <body>
     <h1>You are logged in!!</h1>
-    <form action="/update" method="post">
-      <h1>Update your info</h1>
-      <label>Username:</label>
-      <input name="username" id="username" type="text" required />
-      <br />
-      <label>Password:</label>
-      <input name="password" id="password" type="password" required />
-      <button type="submit">Update</button>
-      <button type="cancel">Cancel</button>
-    </form>
+    <div class="container">
+      <form action="/update" method="post">
+        <h1>Update your info</h1>
+        <label>Username:</label>
+        <input name="username" id="username" type="text" required />
+        <br />
+        <label>Current Password:</label>
+        <input name="password" id="password" type="password" required />
+        <label>New Password:</label>
+        <input name="new_password" id="new_password" type="password" required />
+        <button type="submit">Update</button>
+        <button type="cancel">Cancel</button>
+      </form>
+    </div>
   </body>
   <script>
     const getCookie = (cookieName) => {
@@ -40,4 +45,83 @@
     };
     checkCookie();
   </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
+
+    input {
+      caret-color: red;
+    }
+    body {
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ecf0f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      font-family: poppins;
+    }
+
+    .container {
+      position: relative;
+      width: 350px;
+      height: auto;
+      border-radius: 20px;
+      padding: 40px;
+      box-sizing: border-box;
+      background: #ecf0f3;
+      box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    }
+
+    .inputs {
+      text-align: left;
+      margin-top: 30px;
+    }
+
+    label,
+    input,
+    button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: none;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    input::placeholder {
+      color: gray;
+    }
+
+    input {
+      background: #ecf0f3;
+      padding: 10px;
+      padding-left: 20px;
+      height: 50px;
+      font-size: 14px;
+      border-radius: 50px;
+      box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+    }
+
+    button {
+      color: white;
+      margin-top: 20px;
+      background: #1da1f2;
+      height: 40px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 900;
+
+      transition: 0.5s;
+    }
+
+    button:hover {
+      background-color: rgb(32, 53, 122);
+    }
+  </style>
 </html>
