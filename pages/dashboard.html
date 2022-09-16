@@ -8,5 +8,41 @@
   </head>
   <body>
     <h1>You are logged in!!</h1>
+    <form action="/authentication" method="post">
+      <label>Username:</label>
+      <input
+        name="username"
+        id="username"
+        type="text"
+        placeholder="Type in user name"
+        required
+      />
+      <br />
+      <label>Password:</label>
+      <input
+        name="password"
+        id="password"
+        type="password"
+        placeholder="Password"
+        required
+      />
+      <button type="submit">Update</button>
+    </form>
   </body>
+  <script>
+    const getCookie = (username) => {
+      const cookieDecoded = decodeURIComponent(document.cookie);
+      const cookieData = cookieDecoded.split("=");
+
+      console.log(cookieData);
+      document.getElementById("username").innerHTML = cookieData[1];
+      document.getElementById("password").innerHTML = cookieData[3];
+      // if (cookieData === undefined) {
+      //   document.getElementById("username").innerText = "New user";
+      // } else {
+      //   document.getElementById("").innerText = cookieData[1];
+      // }
+    };
+    getCookie();
+  </script>
 </html>

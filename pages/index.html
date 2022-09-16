@@ -7,7 +7,22 @@
     <title>Landing Page</title>
   </head>
   <body>
-    <h1>Landing page</h1>
-    <a href="login.html">Login here</a>
+    <h1>Welcome <span id="currentUser"></span></h1>
+    <a href="login">Login here</a>
   </body>
+  <script>
+    const getCookie = () => {
+      const cookieDecoded = decodeURIComponent(document.cookie);
+      const cookieData = cookieDecoded.split("=");
+
+      console.log(cookieData);
+
+      if (cookieData === undefined) {
+        document.getElementById("currentUser").innerText = "New user";
+      } else {
+        document.getElementById("currentUser").innerText = cookieData[1];
+      }
+    };
+    getCookie();
+  </script>
 </html>
