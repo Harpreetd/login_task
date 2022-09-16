@@ -8,41 +8,36 @@
   </head>
   <body>
     <h1>You are logged in!!</h1>
-    <form action="/authentication" method="post">
+    <form action="/update" method="post">
+      <h1>Update your info</h1>
       <label>Username:</label>
-      <input
-        name="username"
-        id="username"
-        type="text"
-        placeholder="Type in user name"
-        required
-      />
+      <input name="username" id="username" type="text" required />
       <br />
       <label>Password:</label>
-      <input
-        name="password"
-        id="password"
-        type="password"
-        placeholder="Password"
-        required
-      />
+      <input name="password" id="password" type="password" required />
       <button type="submit">Update</button>
+      <button type="cancel">Cancel</button>
     </form>
   </body>
   <script>
-    const getCookie = (username) => {
-      const cookieDecoded = decodeURIComponent(document.cookie);
-      const cookieData = cookieDecoded.split("=");
-
-      console.log(cookieData);
-      document.getElementById("username").innerHTML = cookieData[1];
-      document.getElementById("password").innerHTML = cookieData[3];
-      // if (cookieData === undefined) {
-      //   document.getElementById("username").innerText = "New user";
-      // } else {
-      //   document.getElementById("").innerText = cookieData[1];
-      // }
+    const getCookie = (cookieName) => {
+      const cookieArray = document.cookie.split(";");
+      let cookies_names = [];
+      let cookies_values = [];
+      let count = 0;
+      for (let i in cookieArray) {
+        cookies_names[count] = cookieArray[i].split("=")[0];
+        cookies_values[count] = cookieArray[i].split("=")[1];
+        count++;
+      }
+      return cookies_values;
     };
-    getCookie();
+
+    const checkCookie = () => {
+      let currentUserInfo = getCookie("username");
+      document.getElementById("username").placeholder = currentUserInfo[0];
+      document.getElementById("password").placeholder = currentUserInfo[1];
+    };
+    checkCookie();
   </script>
 </html>

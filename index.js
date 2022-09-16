@@ -41,7 +41,7 @@ app.post("/authentication", (req, res) => {
 
   let storedUserName = userList.users.find((user) => user.username == username);
   let storedPassword = userList.users.find((user) => user.password == password);
-  
+
   if (
     storedUserName.username === username &&
     storedPassword.password === password
@@ -52,6 +52,13 @@ app.post("/authentication", (req, res) => {
   } else {
     res.redirect("/login");
   }
+  res.end();
+});
+// Post for Updating user info
+app.post("/update", (req, res) => {
+  let newUserName = req.body.username;
+  let newPassword = req.body.password;
+  res.write(newUserName + newPassword);
   res.end();
 });
 // route to dashboard
@@ -66,5 +73,3 @@ app.get("/dashboard", (req, res) => {
 app.listen(port, () =>
   console.log(`server is running at http://${hostname}:${port}`)
 );
-
-
