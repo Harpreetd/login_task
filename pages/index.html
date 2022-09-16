@@ -11,18 +11,30 @@
     <a href="login">Login here</a>
   </body>
   <script>
-    const getCookie = () => {
-      const cookieDecoded = decodeURIComponent(document.cookie);
-      const cookieData = cookieDecoded.split("=");
+    const getCookie = (cookieName) => {
+      const cookieArray = document.cookie.split(";");
+      console.log(cookieArray);
+      for (let i = 0; i < cookieArray.length; i++) {
+        let cookiePair = cookieArray[i].split("=");
+        console.log(cookiePair);
 
-      console.log(cookieData);
-
-      if (cookieData === undefined) {
-        document.getElementById("currentUser").innerText = "New user";
-      } else {
-        document.getElementById("currentUser").innerText = cookieData[1];
+        if (cookieName === cookiePair[0].trim()) {
+          console.log(cookiePair[1]);
+          return decodeURIComponent(cookiePair[1]);
+        } else {
+          return null;
+        }
       }
     };
-    getCookie();
+    const checkCookie = () => {
+      let currentUser = getCookie("username");
+      console.log(currentUser);
+      if (currentUser === " ") {
+        document.getElementById("currentUser").innerText = "New user";
+      } else {
+        document.getElementById("currentUser").innerText = currentUser;
+      }
+    };
+    checkCookie();
   </script>
 </html>
