@@ -13,13 +13,11 @@
   <script>
     const getCookie = (cookieName) => {
       const cookieArray = document.cookie.split(";");
-      console.log(cookieArray);
+
       for (let i = 0; i < cookieArray.length; i++) {
         let cookiePair = cookieArray[i].split("=");
-        console.log(cookiePair);
 
         if (cookieName === cookiePair[0].trim()) {
-          console.log(cookiePair[1]);
           return decodeURIComponent(cookiePair[1]);
         } else {
           return null;
@@ -28,7 +26,7 @@
     };
     const checkCookie = () => {
       let currentUser = getCookie("username");
-      console.log(currentUser);
+
       if (currentUser === " ") {
         document.getElementById("currentUser").innerText = "New user";
       } else {
